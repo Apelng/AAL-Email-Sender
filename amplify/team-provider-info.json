@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-apelassetemail-dev-7991a-authRole",
+      "UnauthRoleArn": "arn:aws:iam::573287491654:role/amplify-apelassetemail-dev-7991a-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::573287491654:role/amplify-apelassetemail-dev-7991a-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-apelassetemail-dev-7991a-deployment",
+      "UnauthRoleName": "amplify-apelassetemail-dev-7991a-unauthRole",
+      "StackName": "amplify-apelassetemail-dev-7991a",
+      "StackId": "arn:aws:cloudformation:us-east-1:573287491654:stack/amplify-apelassetemail-dev-7991a/944f9350-16da-11f0-ae16-123da77de763",
+      "AmplifyAppId": "d37f8nahg5du11"
+    }
+  }
+}

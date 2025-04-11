@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node app.js",
-    "build": "npm install && cp -R *.html css/ js/ img/ app.js package.json build/",
+    "build": "echo 'no build needed fro this backend app'",
     "dev": "nodemon app.js"
   },
 
