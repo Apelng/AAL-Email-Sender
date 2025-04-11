@@ -44,6 +44,7 @@
       border-radius: 0px;
       display: none; /* Hidden until preview button is clicked */
       overflow: auto;
+
     }
 
     h1 {
@@ -108,7 +109,7 @@
     
     #letter {
     
-      max-width: 794px;
+      width: 794px;
       min-height: 1123px;
       background: #fff;
       margin: 0 auto;
@@ -125,6 +126,7 @@
       text-rendering: optimizeLegibility;
     }
 
+    
     .letterhead img {
       width: 100%;
       max-height: auto;
@@ -142,7 +144,8 @@
       white-space: pre-line;
       margin-bottom: 20px;
     }
-    
+
+ 
     /* Responsive Styles */
     @media (max-width: 768px) {
       .container {
@@ -306,9 +309,9 @@
           <p style="font-weight: bold; text-transform: uppercase; margin-top: 4px;">MANAGING DIRECTOR/CEO</p>
         </div>
         
-        <div style="margin-top: 40px; font-size: 9px; border-top: 5px solid #107b5f; padding-top: 10px; text-align:center;">
+        <div style="margin-top: 40px; font-size: 10px; border-top: 5px solid #107b5f; padding-top: 8px; text-align:center;">
           8, Alhaji Bashorun Street, Off Norman Williams Crescent, South-West Ikoyi, Lagos. | P.O Box 2388, Marina, Lagos.<br>
-          <a href="#" style="color: #333; text-decoration: none;">www.apel.com.ng</a> |  <a href="#" style="color: #333; text-decoration: none;">info@apel.com.ng</a> | Tel: 07046277071, 02013301992
+       www.apel.com.ng |  info@apel.com.ng | Tel: 07046277071, 02013301992
         </div>
       `;
       
@@ -338,7 +341,7 @@
 
     const canvas = await html2canvas(letter, {
         width: 794, // A4 width at 96dpi
-        height: 1250, // A4 height at 96dpi
+        height: 1210, // A4 height at 96dpi
         scale: 3, // Triple scale for high DPI output
         logging: true,
         useCORS: true,

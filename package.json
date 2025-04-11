@@ -1,12 +1,10 @@
-
 {
   "name": "apelasset_email",
   "version": "1.0.0",
   "scripts": {
-    "start": "node app.js",        
-    "build": "npm install && npm run build-client", 
-    "build-client": "cd client && npm install && npm run build",
-    "dev": "nodemon app.js"        
+    "start": "node app.js",
+    "build": "npm install && cp -R *.html css/ js/ img/ app.js package.json build/",
+    "dev": "nodemon app.js"
   },
 
   "dependencies": {
