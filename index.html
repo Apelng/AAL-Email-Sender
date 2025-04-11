@@ -107,8 +107,9 @@
 
     
     #letter {
-      width: 904px; /* A4 at 96dpi (794 × 1123) */
-      min-height: 123px;
+    
+      max-width: 794px;
+      min-height: 1123px;
       background: #fff;
       margin: 0 auto;
       padding: 60px;
@@ -337,7 +338,7 @@
 
     const canvas = await html2canvas(letter, {
         width: 794, // A4 width at 96dpi
-        height: 1223, // A4 height at 96dpi
+        height: 1250, // A4 height at 96dpi
         scale: 3, // Triple scale for high DPI output
         logging: true,
         useCORS: true,

@@ -1,10 +1,12 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-
+const path = require('path');
 const app = express();
 app.use(bodyParser.json({ limit: '10mb' }));
-app.use(express.static(__dirname)); // serve frontend files
+ app.use(express.static(__dirname)); // serve frontend files
+
+
 
 app.post('/send-email', async (req, res) => {
   const { email, image, name } = req.body;
