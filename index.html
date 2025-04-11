@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome Message</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #107b5f;
+      --text: #333;
+      --bg: #f8fdfb;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-container {
+      width: 40%;
+    }
+
+    .preview-container {
+      width: 60%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 0px;
+      display: none; /* Hidden until preview button is clicked */
+      overflow: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 32px;
+      font-size: 24px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 16px;
+      color: var(--text);
+    }
+
+    input, textarea {
+      width: 80%;
+      padding: 12px 14px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-family: inherit;
+    }
+    
+    textarea {
+      min-height: 100px;
+      white-space: pre-wrap;
+    }
+    
+    button {
+      width: 40%;
+      padding: 12px 14px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-family: inherit;
+      margin-left: 120px;
+    }
+    
+    input:focus, textarea:focus {
+      outline: 2px solid var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0c624c;
+    }
+
+    
+    #letter {
+      width: 794px; /* A4 at 96dpi (794 × 1123) */
+      min-height: 1123px;
+      background: #fff;
+      margin: 0 auto;
+      padding: 60px;
+      font-family: 'Century Gothic', sans-serif;
+      color: #000;
+      font-size: 14px; /* Slightly larger base font size */
+      text-align: justify;
+      font-weight: 600;
+      box-sizing: border-box;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .letterhead img {
+      width: 100%;
+      max-height: auto;
+      object-fit: contain;
+      margin-bottom: 24px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+    }
+
+    .address-block {
+      white-space: pre-line;
+      margin-bottom: 20px;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        flex-direction: column;
+      }
+
+      .form-container,
+      .preview-container {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 16px;
+      }
+
+      .btn {
+        font-size: 12px;
+        padding: 10px 12px;
+      }
+
+      input, textarea, button {
+        width: 100%;
+        font-size: 12px;
+        padding: 10px 12px;
+      }
+      
+      button {
+        margin-left: 0;
+        width: 100%;
+      }
+      
+      #letter {
+        width: 100%;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+
+      .form-container,
+      .preview-container {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      label {
+        font-size: 12px;
+      }
+
+      .btn {
+        font-size: 12px;
+        padding: 8px 10px;
+        margin-left: 0;
+      }
+
+      input, textarea, button {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      #letter {
+        padding: 20px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1>Email Sender</h1>
+      <form id="emailForm">
+        <label for="clientName">Client Name</label>
+        <input type="text" id="clientName" required />
+
+        <label for="address">Client Address</label>
+        <textarea id="address" required></textarea>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" required />
+
+        <label for="email">Client Email</label>
+        <input type="email" id="email" required />
+
+        <div class="buttons">
+          <button type="button" class="btn" id="previewBtn">Preview Email</button>
+          <button type="submit" class="btn" id="sendBtn" style="display: none;">Send Email</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Preview container -->
+    <div class="preview-container" id="previewWrapper">
+      <div id="letter">
+        <div class="letterhead" style="margin-top: -50px;">
+          <img src="img/Welcome.jpg" alt="AAL Letterhead" />
+        </div>
+        <div id="letterContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    const previewBtn = document.getElementById('previewBtn');
+    const sendBtn = document.getElementById('sendBtn');
+    const letter = document.getElementById('letter');
+    const letterContent = document.getElementById('letterContent');
+    const previewWrapper = document.getElementById('previewWrapper');
+
+    previewBtn.addEventListener('click', () => {
+      const name = document.getElementById('clientName').value;
+      const address = document.getElementById('address').value;
+      const date = new Date(document.getElementById('date').value).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      if (!name || !address || !date) {
+        alert("Please fill in all fields before previewing.");
+        return;
+      }
+
+      letterContent.innerHTML = `
+        <p style="margin-top: -20px;">${date}</p><br><br>
+        <p style="font-weight:bold">Dear ${name}</p>
+        <div class="address-block">${address}</div>
+        
+        <div style="margin-bottom: 20px;">
+          <p style="font-weight:bold">Welcome to Havard Asset LIMITED</p>
+          
+          <p>My name is Jane doe, and I am the Managing Director of Havard Asset Limited ("Havard Asset"), a Trading License Holder of the Nigerian Exchange.</p>
+          
+          <p>I would like to personally welcome you to Apel, and additionally, appreciate your interest in our company, through the commencement of the onboarding process - the recent account opening. We are indeed delighted and honoured to have you onboard!</p>
+          
+          <p>Havard Asset is committed to providing bespoke financial services, building long lasting partnerships grounded on trust, innovation and results. Our crops of professionals are dedicated to ensuring effective and efficient achievement of your investment goals and objectives through bespoke services and support.</p>
+          
+          <p>I believe that the capital markets- equities/bonds/ETFs possess a lot of potentials and presents great opportunities for all classes of investors. We will promptly and continuously identify these opportunities as they unfold, present them to you in order to enable you grow and maximise return on your investment.</p>
+          
+          <p>Should you require further information or like to register any complaint, or suggest any other way we can add more value to your investment, kindly contact me on my details: email: tadeosun@apelaset.com or telephone number +234 706 418 9857.</p>
+          
+          <p>I appreciate your business relationship and look forward to exciting times with you.</p>
+        </div>
+        
+        <div style="margin-top: 35px;">
+          <p>Your faithfully,<br>
+          for Havard Asset LIMITED</p>
+          
+          <img src="img/sign.png" style="height: 50px;"/>
+          
+          <p style="font-weight: bold; margin-top: 4px;">Jane doe</p>
+          <p style="font-weight: bold; text-transform: uppercase; margin-top: 4px;">MANAGING DIRECTOR/CEO</p>
+        </div>
+        
+        <div style="margin-top: 40px; font-size: 9px; border-top: 5px solid #107b5f; padding-top: 10px; text-align:center;">
+          8, Alhaji Bashorun Street, Off Norman Williams Crescent, South-West Ikoyi, Lagos. | P.O Box 2388, Marina, Lagos.<br>
+          <a href="#" style="color: #333; text-decoration: none;">www.apel.com.ng</a> |  <a href="#" style="color: #333; text-decoration: none;">info@apel.com.ng</a> | Tel: 07046277071, 02013301992
+        </div>
+      `;
+      
+      previewWrapper.style.display = 'block';
+      sendBtn.style.display = 'block';
+    });
+
+    document.getElementById('emailForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const name = document.getElementById('clientName').value;
+
+      // Convert letter preview to image with proper dimensions
+    //   const canvas = await html2canvas(letter, {
+    //     width: 595, // A4 width in pixels
+    //     height: 842, // A4 height in pixels
+    //     scale: 2, // Higher quality
+    //     logging: true,
+    //     useCORS: true,
+    //     allowTaint: true,
+    //     letterRendering: true,
+    //     backgroundColor: '#FFFFFF'
+    //   });
+      
+    //   const image = canvas.toDataURL('image/jpeg', 1.0);
+
+    const canvas = await html2canvas(letter, {
+        width: 850, // A4 width at 96dpi
+        height: 1223, // A4 height at 96dpi
+        scale: 3, // Triple scale for high DPI output
+        logging: true,
+        useCORS: true,
+        allowTaint: true,
+        letterRendering: true,
+        backgroundColor: '#FFFFFF',
+        dpi: 288, // High DPI for print quality
+        ignoreElements: function(element) {
+          // Ignore any interactive elements
+          return element.classList.contains('btn') || 
+                 element.tagName === 'BUTTON' || 
+                 element.tagName === 'INPUT';
+        }
+      });
+      
+      // Convert to JPEG with maximum quality
+      const image = canvas.toDataURL('image/jpeg', 1.0);
+
+      // For demonstration - in a real app you would send this to your server
+      console.log('High quality image generated');
+      
+      // Create a download link for testing
+      const link = document.createElement('a');
+      link.download = 'letter-high-quality.jpg';
+      link.href = image;
+      link.click();
+
+
+      // For demonstration - in a real app you would send this to your server
+      console.log('Image generated, would send to:', email);
+      
+      
+      const response = await fetch('/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, image, name })
+      });
+
+      if (response.ok) {
+        alert('Email sent successfully!');
+      } else {
+        alert('Failed to send email. Please try again.');
+      }
+    
+      
+      alert('Email would be sent to: ' + email);
+    });
+  </script>
+</body>
+</html>
