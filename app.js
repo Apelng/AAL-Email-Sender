@@ -6,9 +6,9 @@ const app = express();
 app.use(bodyParser.json({ limit: '10mb' }));
  app.use(express.static(__dirname)); // serve frontend files
 
+ import { Analytics } from "@vercel/analytics/react"
 
-
-app.post('/send-email', async (req, res) => {
+app.post('https://aal-email-sender.vercel.app/send-email', async (req, res) => {
   const { email, image, name } = req.body;
 
   // Setup your email service

@@ -374,7 +374,7 @@
       console.log('Image generated, would send to:', email);
       
       
-      const response = await fetch('/send-email', {
+      const response = await fetch('https://aal-email-sender.vercel.app/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, image, name })
