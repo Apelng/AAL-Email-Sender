@@ -107,8 +107,8 @@
 
     
     #letter {
-      width: 794px; /* A4 at 96dpi (794 × 1123) */
-      min-height: 1123px;
+      width: 904px; /* A4 at 96dpi (794 × 1123) */
+      min-height: 123px;
       background: #fff;
       margin: 0 auto;
       padding: 60px;
@@ -116,7 +116,7 @@
       color: #000;
       font-size: 14px; /* Slightly larger base font size */
       text-align: justify;
-      font-weight: 600;
+      font-weight: 500;
       box-sizing: border-box;
       position: relative;
       -webkit-font-smoothing: antialiased;
@@ -336,7 +336,7 @@
     //   const image = canvas.toDataURL('image/jpeg', 1.0);
 
     const canvas = await html2canvas(letter, {
-        width: 850, // A4 width at 96dpi
+        width: 794, // A4 width at 96dpi
         height: 1223, // A4 height at 96dpi
         scale: 3, // Triple scale for high DPI output
         logging: true,
@@ -344,7 +344,7 @@
         allowTaint: true,
         letterRendering: true,
         backgroundColor: '#FFFFFF',
-        dpi: 288, // High DPI for print quality
+        dpi: 300, // High DPI for print quality
         ignoreElements: function(element) {
           // Ignore any interactive elements
           return element.classList.contains('btn') || 
